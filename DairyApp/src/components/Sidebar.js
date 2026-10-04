@@ -21,42 +21,63 @@ const navItems = [
   { name: 'Settings', href: '/settings', icon: Settings },
 ];
 
+import { useFarm } from '@/context/FarmContext';
+
 export default function Sidebar() {
   const pathname = usePathname();
+  const { isMobileMenuOpen, setIsMobileMenuOpen } = useFarm();
 
   return (
-    <div className="w-64 bg-white border-r h-screen fixed top-0 left-0 flex flex-col shadow-sm">
-      <div className="h-16 flex items-center px-6 border-b">
-        <span className="text-xl font-bold text-blue-600 flex items-center gap-2">
-          🐄 Nitara ERP
-        </span>
-      </div>
-      <div className="flex-1 overflow-y-auto py-4">
-        <nav className="space-y-1 px-3">
-          {navItems.map((item) => {
-            const isActive = pathname === item.href;
-            return (
-              <Link 
-                key={item.name} 
-                href={item.href}
-                className={`flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors ${isActive ? 'bg-blue-50 text-blue-700 font-semibold' : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'}`}
-              >
-                <item.icon className="w-5 h-5" />
-                <span className="text-sm">{item.name}</span>
-              </Link>
-            )
-          })}
-        </nav>
-      </div>
-      <div className="p-4 border-t">
-        <div className="flex items-center gap-3 px-3 py-2 text-sm font-medium text-gray-700 bg-gray-50 rounded-lg cursor-pointer hover:bg-gray-100 transition">
-          <div className="w-8 h-8 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center font-bold">A</div>
-          <div>
-            <p>Admin</p>
-            <p className="text-xs text-gray-500 font-normal">Farm Manager</p>
+    <>
+      {/* Mobile Overlay */}
+      {isMobileMenuOpen && (
+        <div 
+          className="fixed inset-0 bg-black/50 z-40 lg:hidden"
+          onClick={() => setIsMobileMenuOpen(false)}
+        />
+      )}
+      
+      {/* Sidebar Container */}
+      <div className={`
+        fixed top-0 left-0 h-screen bg-white border-r flex flex-col shadow-lg lg:shadow-sm z-50
+        transition-transform duration-300 ease-in-out w-64
+        ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
+        lg:static lg:block shrink-0
+      `}>
+        <div className="h-16 flex items-center px-6 border-b justify-between">
+          <span className="text-xl font-bold text-blue-600 flex items-center gap-2">
+            🐄 Nitara ERP
+          </span>
+          <button className="lg:hidden p-1 text-gray-500" onClick={() => setIsMobileMenuOpen(false)}>✕</button>
+        </div>
+        <div className="flex-1 overflow-y-auto py-4">
+          <nav className="space-y-1 px-3">
+            {navItems.map((item) => {
+              const isActive = pathname === item.href;
+              return (
+                <Link 
+                  key={item.name} 
+                  href={item.href}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className={`flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors ${isActive ? 'bg-blue-50 text-blue-700 font-semibold' : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'}`}
+                >
+                  <item.icon className="w-5 h-5" />
+                  <span className="text-sm">{item.name}</span>
+                </Link>
+              )
+            })}
+          </nav>
+        </div>
+        <div className="p-4 border-t">
+          <div className="flex items-center gap-3 px-3 py-2 text-sm font-medium text-gray-700 bg-gray-50 rounded-lg cursor-pointer hover:bg-gray-100 transition">
+            <div className="w-8 h-8 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center font-bold">A</div>
+            <div>
+              <p>Admin</p>
+              <p className="text-xs text-gray-500 font-normal">Farm Manager</p>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }

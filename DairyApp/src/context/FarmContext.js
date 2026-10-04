@@ -122,8 +122,10 @@ export function FarmProvider({ children }) {
     }
   }, [prices, cows, calves, inventory, isLoaded]);
 
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   return (
-    <FarmContext.Provider value={{ prices, setPrices, cows, setCows, calves, setCalves, inventory, setInventory }}>
+    <FarmContext.Provider value={{ prices, setPrices, cows, setCows, calves, setCalves, inventory, setInventory, isMobileMenuOpen, setIsMobileMenuOpen }}>
       {children}
     </FarmContext.Provider>
   );

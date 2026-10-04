@@ -1,10 +1,17 @@
+"use client";
 import { Search, Bell, Menu } from 'lucide-react';
+import { useFarm } from '@/context/FarmContext';
 
 export default function Topbar() {
+  const { isMobileMenuOpen, setIsMobileMenuOpen } = useFarm();
+  
   return (
     <header className="h-16 bg-white border-b flex items-center justify-between px-6 sticky top-0 z-10 shadow-sm">
       <div className="flex items-center gap-4">
-        <button className="lg:hidden text-gray-500 hover:text-gray-700">
+        <button 
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          className="lg:hidden text-gray-500 hover:text-gray-700 p-1"
+        >
           <Menu className="w-6 h-6" />
         </button>
         <div className="relative hidden md:block">
