@@ -7,8 +7,15 @@ import Providers from "@/components/Providers";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Nitara FarmPro Clone",
-  description: "Advanced Dairy Farm Management ERP",
+  title: "DairyOS Precision Engine",
+  description: "Advanced Scientific TMR and Feed Management",
+  manifest: "/manifest.json",
+  themeColor: "#1e3a8a",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "DairyOS",
+  },
 };
 
 export default function RootLayout({ children }) {

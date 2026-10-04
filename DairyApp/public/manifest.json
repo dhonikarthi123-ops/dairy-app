@@ -1,0 +1,17 @@
+{
+  "name": "DairyOS Precision Engine",
+  "short_name": "DairyOS",
+  "description": "Scientific TMR and Feed Management",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#1e3a8a",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

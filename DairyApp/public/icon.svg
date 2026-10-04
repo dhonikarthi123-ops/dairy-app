@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="112" fill="#1e3a8a"/>
+  <path d="M256 120c-75.1 0-136 60.9-136 136s60.9 136 136 136 136-60.9 136-136-60.9-136-136-136zm0 240c-57.4 0-104-46.6-104-104s46.6-104 104-104 104 46.6 104 104-46.6 104-104 104z" fill="#ffffff"/>
+  <circle cx="256" cy="256" r="64" fill="#3b82f6"/>
+  <text x="256" y="380" font-family="Arial, sans-serif" font-weight="bold" font-size="64" fill="#ffffff" text-anchor="middle">DairyOS</text>
+</svg>
